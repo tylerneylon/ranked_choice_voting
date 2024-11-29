@@ -313,11 +313,11 @@ if not all(is_ok):
 
 print('Finding the first-place winner:')
 winners = find_winner(book_votes, be_verbose=True)
-print()
+print('\nFirst place winner(s):')
 for w in winners:
     print(titles[w])
-print()
 
+print('\nFull ranking of all candidates:')
 books_left = set(sum(book_votes, start=[]))
 ignore = set()
 rank = 1
