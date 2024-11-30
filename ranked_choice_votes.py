@@ -119,12 +119,12 @@ def find_winner(votes, be_verbose=True, ignore=set()):
 
 def print_vote_table(votes):
     ''' Print out a human-friendly table of the votes in `votes`. '''
-    top_row = list(range(1, len(titles) + 1))
+    top_row = list(range(len(titles)))
     for i, row in enumerate([top_row] + votes):
         prefix = '    book' if i == 0 else f'voter {i:2d}'
         print(prefix + ' |', end='')
         for vote in row:
-            vote_str = '   ' if vote == 0 else f'{vote:3d}'
+            vote_str = '   ' if (vote == 0 and i > 0) else f'{vote:3d}'
             print(vote_str, end='')
         if i > 0 and not is_ok[i - 1]:
             print('  *', end='')
@@ -246,7 +246,7 @@ titles = [
 ]
 print('I believe the book titles are:\n')
 for i, title in enumerate(titles):
-    print(f'{i + 1:5d}. {title}')
+    print(f'{i:5d}. {title}')
 
 # __________
 # Parse and print out the votes.
